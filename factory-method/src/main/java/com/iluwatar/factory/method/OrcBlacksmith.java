@@ -33,6 +33,10 @@ package com.iluwatar.factory.method;
  * @todo: diese Klasse soll ({@link OrcWeapon}) Objekte erzeugen, implementiere dazu eine create-Methode
  *
  */
-public class OrcBlacksmith {
+public class OrcBlacksmith implements Blacksmith{
+
+    public Weapon manufactureWeapon(WeaponType weaponType){
+        return new OrcWeapon(weaponType);
+    }
 
 }
