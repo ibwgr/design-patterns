@@ -44,54 +44,43 @@ public class App {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
-  private King king;
-  private Castle castle;
-  private Army army;
+//  private King king;
+//  private Castle castle;
+//  private Army army;
 
   /**
    * Creates kingdom
    */
-  public void createKingdom(final KingdomFactory factory) {
-    setKing(factory.createKing());
-    setCastle(factory.createCastle());
-    setArmy(factory.createArmy());
-  }
+//  public void createKingdom(final KingdomFactory factory) {
+//    this.king = factory.createKing();
+//    this.castle = factory.createCastle();
+//    this.army = factory.createArmy();
+//  }
+//
+//  King getKing(final KingdomFactory factory) {
+//    return factory.createKing();
+//  }
+//
+//  public King getKing() {
+//    return king;
+//  }
+//
+//  Castle getCastle(final KingdomFactory factory) {
+//    return factory.createCastle();
+//  }
+//
+//  public Castle getCastle() {
+//    return castle;
+//  }
+//
+//  Army getArmy(final KingdomFactory factory) {
+//    return factory.createArmy();
+//  }
+//
+//  public Army getArmy() {
+//    return army;
+//  }
 
-  King getKing(final KingdomFactory factory) {
-    return factory.createKing();
-  }
-
-  public King getKing() {
-    return king;
-  }
-
-  private void setKing(final King king) {
-    this.king = king;
-  }
-  
-  Castle getCastle(final KingdomFactory factory) {
-    return factory.createCastle();
-  }
-
-  public Castle getCastle() {
-    return castle;
-  }
-
-  private void setCastle(final Castle castle) {
-    this.castle = castle;
-  }
-  
-  Army getArmy(final KingdomFactory factory) {
-    return factory.createArmy();
-  }
-
-  public Army getArmy() {
-    return army;
-  }
-
-  private void setArmy(final Army army) {
-    this.army = army;
-  }
   
   /**
    * Program entry point
@@ -101,25 +90,37 @@ public class App {
    */
   public static void main(String[] args) {
 
-    App app = new App();
+ //   App app = new App();
 
-    LOGGER.info("Elf Kingdom");
-    app.createKingdom(new ElfKingdomFactory());
-    LOGGER.info(app.getArmy().getDescription());
-    LOGGER.info(app.getCastle().getDescription());
-    LOGGER.info(app.getKing().getDescription());
+    LOGGER.info("Elf Kingdom with FactoryProducer");
+    Kingdom elfKingdom = FactoryProducer.createKingdom("Elf");
+    LOGGER.info(elfKingdom.getArmy().getDescription());
+    LOGGER.info(elfKingdom.getCastle().getDescription());
+    LOGGER.info(elfKingdom.getKing().getDescription());
 
-    LOGGER.info("Orc Kingdom");
-    app.createKingdom(new OrcKingdomFactory());
-    LOGGER.info(app.getArmy().getDescription());
-    LOGGER.info(app.getCastle().getDescription());
-    LOGGER.info(app.getKing().getDescription());
+    LOGGER.info("Orc Kingdom with FactoryProducer");
+    Kingdom orcKingdom = FactoryProducer.createKingdom("Orc");
+    LOGGER.info(orcKingdom.getArmy().getDescription());
+    LOGGER.info(orcKingdom.getCastle().getDescription());
+    LOGGER.info(orcKingdom.getKing().getDescription());
 
-    // Verbesserungspotential (Vermeidung von new)
-    LOGGER.info("Elf Kingdom via FactoryProducer");
-    app.createKingdom(KingdomFactoryProducer.getFactory("elf"));
-    LOGGER.info(app.getArmy().getDescription());
-    LOGGER.info(app.getCastle().getDescription());
-    LOGGER.info(app.getKing().getDescription());
+//    LOGGER.info("Elf Kingdom");
+//    app.createKingdom(new ElfKingdomFactory());
+//    LOGGER.info(app.getArmy().getDescription());
+//    LOGGER.info(app.getCastle().getDescription());
+//    LOGGER.info(app.getKing().getDescription());
+//
+//    LOGGER.info("Orc Kingdom");
+//    app.createKingdom(new OrcKingdomFactory());
+//    LOGGER.info(app.getArmy().getDescription());
+//    LOGGER.info(app.getCastle().getDescription());
+//    LOGGER.info(app.getKing().getDescription());
+//
+//    // Verbesserungspotential (Vermeidung von new)
+//    LOGGER.info("Elf Kingdom via FactoryProducer");
+//    app.createKingdom(KingdomFactoryProducer.getFactory("elf"));
+//    LOGGER.info(app.getArmy().getDescription());
+//    LOGGER.info(app.getCastle().getDescription());
+//    LOGGER.info(app.getKing().getDescription());
   }
 }
