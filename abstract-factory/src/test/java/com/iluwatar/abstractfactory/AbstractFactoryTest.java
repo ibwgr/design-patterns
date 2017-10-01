@@ -33,52 +33,57 @@ import org.junit.Test;
  */
 public class AbstractFactoryTest {
 
-  private App app = new App();
-  private KingdomFactory elfFactory;
-  private KingdomFactory orcFactory;
+//  private App app = new App();
+//  private KingdomFactory elfFactory;
+//  private KingdomFactory orcFactory;
+
+  private Kingdom elfKingdom;
+  private Kingdom orcKingdom;
 
   @Before
   public void setUp() {
-    elfFactory = new ElfKingdomFactory();
-    orcFactory = new OrcKingdomFactory();
+//    elfFactory = new ElfKingdomFactory();
+//    orcFactory = new OrcKingdomFactory();
+
+    elfKingdom = FactoryProducer.createKingdom("Elf");
+    orcKingdom = FactoryProducer.createKingdom("Orc");
   }
 
   @Test
-  public void king() {
-    final King elfKing = app.getKing(elfFactory);
+  public void king(){
+    final King elfKing = elfKingdom.getKing();
     assertTrue(elfKing instanceof ElfKing);
     assertEquals(ElfKing.DESCRIPTION, elfKing.getDescription());
-    final King orcKing = app.getKing(orcFactory);
+    final King orcKing = orcKingdom.getKing();
     assertTrue(orcKing instanceof OrcKing);
     assertEquals(OrcKing.DESCRIPTION, orcKing.getDescription());
   }
 
   @Test
-  public void castle() {
-    final Castle elfCastle = app.getCastle(elfFactory);
+  public void castle(){
+    final Castle elfCastle = elfKingdom.getCastle();
     assertTrue(elfCastle instanceof ElfCastle);
     assertEquals(ElfCastle.DESCRIPTION, elfCastle.getDescription());
-    final Castle orcCastle = app.getCastle(orcFactory);
+    final Castle orcCastle = orcKingdom.getCastle();
     assertTrue(orcCastle instanceof OrcCastle);
     assertEquals(OrcCastle.DESCRIPTION, orcCastle.getDescription());
   }
 
   @Test
-  public void army() {
-    final Army elfArmy = app.getArmy(elfFactory);
+  public void army(){
+    final Army elfArmy = elfKingdom.getArmy();
     assertTrue(elfArmy instanceof ElfArmy);
     assertEquals(ElfArmy.DESCRIPTION, elfArmy.getDescription());
-    final Army orcArmy = app.getArmy(orcFactory);
+    final Army orcArmy = orcKingdom.getArmy();
     assertTrue(orcArmy instanceof OrcArmy);
     assertEquals(OrcArmy.DESCRIPTION, orcArmy.getDescription());
   }
 
-  @Test
+    @Test
   public void createElfKingdom() {
-    app.createKingdom(elfFactory);
-    final King king = app.getKing();
-    final Castle castle = app.getCastle();
-    final Army army = app.getArmy();
+    final King king = elfKingdom.getKing();
+    final Castle castle = elfKingdom.getCastle();
+    final Army army = elfKingdom.getArmy();
     assertTrue(king instanceof ElfKing);
     assertEquals(ElfKing.DESCRIPTION, king.getDescription());
     assertTrue(castle instanceof ElfCastle);
@@ -87,12 +92,11 @@ public class AbstractFactoryTest {
     assertEquals(ElfArmy.DESCRIPTION, army.getDescription());
   }
 
-  @Test
+    @Test
   public void createOrcKingdom() {
-    app.createKingdom(orcFactory);
-    final King king = app.getKing();
-    final Castle castle = app.getCastle();
-    final Army army = app.getArmy();
+    final King king = orcKingdom.getKing();
+    final Castle castle = orcKingdom.getCastle();
+    final Army army = orcKingdom.getArmy();
     assertTrue(king instanceof OrcKing);
     assertEquals(OrcKing.DESCRIPTION, king.getDescription());
     assertTrue(castle instanceof OrcCastle);
@@ -100,4 +104,62 @@ public class AbstractFactoryTest {
     assertTrue(army instanceof OrcArmy);
     assertEquals(OrcArmy.DESCRIPTION, army.getDescription());
   }
+
+//  @Test
+//  public void king() {
+//    final King elfKing = app.getKing(elfFactory);
+//    assertTrue(elfKing instanceof ElfKing);
+//    assertEquals(ElfKing.DESCRIPTION, elfKing.getDescription());
+//    final King orcKing = app.getKing(orcFactory);
+//    assertTrue(orcKing instanceof OrcKing);
+//    assertEquals(OrcKing.DESCRIPTION, orcKing.getDescription());
+//  }
+//
+//  @Test
+//  public void castle() {
+//    final Castle elfCastle = app.getCastle(elfFactory);
+//    assertTrue(elfCastle instanceof ElfCastle);
+//    assertEquals(ElfCastle.DESCRIPTION, elfCastle.getDescription());
+//    final Castle orcCastle = app.getCastle(orcFactory);
+//    assertTrue(orcCastle instanceof OrcCastle);
+//    assertEquals(OrcCastle.DESCRIPTION, orcCastle.getDescription());
+//  }
+//
+//  @Test
+//  public void army() {
+//    final Army elfArmy = app.getArmy(elfFactory);
+//    assertTrue(elfArmy instanceof ElfArmy);
+//    assertEquals(ElfArmy.DESCRIPTION, elfArmy.getDescription());
+//    final Army orcArmy = app.getArmy(orcFactory);
+//    assertTrue(orcArmy instanceof OrcArmy);
+//    assertEquals(OrcArmy.DESCRIPTION, orcArmy.getDescription());
+//  }
+//
+//  @Test
+//  public void createElfKingdom() {
+//    app.createKingdom(elfFactory);
+//    final King king = app.getKing();
+//    final Castle castle = app.getCastle();
+//    final Army army = app.getArmy();
+//    assertTrue(king instanceof ElfKing);
+//    assertEquals(ElfKing.DESCRIPTION, king.getDescription());
+//    assertTrue(castle instanceof ElfCastle);
+//    assertEquals(ElfCastle.DESCRIPTION, castle.getDescription());
+//    assertTrue(army instanceof ElfArmy);
+//    assertEquals(ElfArmy.DESCRIPTION, army.getDescription());
+//  }
+//
+//  @Test
+//  public void createOrcKingdom() {
+//    app.createKingdom(orcFactory);
+//    final King king = app.getKing();
+//    final Castle castle = app.getCastle();
+//    final Army army = app.getArmy();
+//    assertTrue(king instanceof OrcKing);
+//    assertEquals(OrcKing.DESCRIPTION, king.getDescription());
+//    assertTrue(castle instanceof OrcCastle);
+//    assertEquals(OrcCastle.DESCRIPTION, castle.getDescription());
+//    assertTrue(army instanceof OrcArmy);
+//    assertEquals(OrcArmy.DESCRIPTION, army.getDescription());
+//  }
 }
