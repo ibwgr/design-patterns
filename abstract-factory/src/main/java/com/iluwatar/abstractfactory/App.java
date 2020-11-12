@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * The Abstract Factory pattern provides a way to encapsulate a group of individual factories that have a common theme
  * without specifying their concrete classes. In normal usage, the client software creates a concrete implementation of
  * the abstract factory and then uses the generic interface of the factory to create the concrete objects that are part
@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
  * The essence of the Abstract Factory pattern is a factory interface ({@link KingdomFactory}) and its implementations (
  * {@link ElfKingdomFactory}, {@link OrcKingdomFactory}). The example uses both concrete implementations to create a
  * king, a castle and an army.
- * 
+ *
  */
 public class App {
 
@@ -68,7 +68,7 @@ public class App {
   private void setKing(final King king) {
     this.king = king;
   }
-  
+
   Castle getCastle(final KingdomFactory factory) {
     return factory.createCastle();
   }
@@ -80,7 +80,7 @@ public class App {
   private void setCastle(final Castle castle) {
     this.castle = castle;
   }
-  
+
   Army getArmy(final KingdomFactory factory) {
     return factory.createArmy();
   }
@@ -92,10 +92,10 @@ public class App {
   private void setArmy(final Army army) {
     this.army = army;
   }
-  
+
   /**
    * Program entry point
-   * 
+   *
    * @param args
    *          command line args
    */
@@ -104,13 +104,13 @@ public class App {
     App app = new App();
 
     LOGGER.info("Elf Kingdom");
-    app.createKingdom(new ElfKingdomFactory());
+    app.createKingdom(FactoryProducer.getFactory(FactoryProducer.KingdomOf.ELF));
     LOGGER.info(app.getArmy().getDescription());
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());
 
     LOGGER.info("Orc Kingdom");
-    app.createKingdom(new OrcKingdomFactory());
+    app.createKingdom(FactoryProducer.getFactory(FactoryProducer.KingdomOf.ORC));
     LOGGER.info(app.getArmy().getDescription());
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());
