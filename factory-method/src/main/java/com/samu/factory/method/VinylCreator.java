@@ -3,7 +3,9 @@ package com.samu.factory.method;
 /**
  * Created by sandromuggli on 13.08.17.
  */
-public class VinylCreator {
+public final class VinylCreator {
+    private VinylCreator() {
+    }
 
     public static Vinyl create(Config config) {
         switch (config.type) {
