@@ -1,13 +1,18 @@
 package second;
 
-public class ProxyPicture {
+public class ProxyPicture implements Picture {
+    private RealPicture realImage;
     private String fileName;
 
-    public ProxyPicture(String fileName) {
+    public ProxyPicture(String fileName){
         this.fileName = fileName;
     }
 
-    public void draw() {
-        new RealPicture(fileName).display();
+    @Override
+    public void display() {
+        if(realImage == null){
+            realImage = new RealPicture(fileName);
+        }
+        realImage.display();
     }
 }
