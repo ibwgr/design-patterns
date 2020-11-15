@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * The Decorator pattern is a more flexible alternative to subclassing. The Decorator class
  * implements the same interface as the target and uses aggregation to "decorate" calls to the
  * target. Using the Decorator pattern it is possible to change the behavior of the class during
@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
  * In this example we show how the simple {@link SimpleTroll} first attacks and then flees the battle.
  * Then we decorate the {@link SimpleTroll} with a {@link ClubbedTroll} and perform the attack again. You
  * can see how the behavior changes after the decoration.
- * 
+ *
  */
 public class App {
 
@@ -43,7 +43,7 @@ public class App {
 
   /**
    * Program entry point
-   * 
+   *
    * @param args command line args
    */
   public static void main(String[] args) {
@@ -65,12 +65,19 @@ public class App {
 
     LOGGER.info("A troll with two huge clubs surprises you.");
     // 1.) @todo: instanziiere einen 'doubleClubbed' troll der 2 Keulen schwingt.
+    Troll doubleClubbed = new ClubbedTroll(clubbed);
+    doubleClubbed.attack();
+    doubleClubbed.fleeBattle();
+    LOGGER.info("Clubbed troll power {}.\n", doubleClubbed.getAttackPower());
 
     LOGGER.info("A troll with a huge club and an arch surprises you.");
     /*
        2.) @todo: instanziiere einen 'clubbedArcherTroll' der eine Keule schwingt und einen Bogen hat.
         Hinweis: Erstelle dazu einen neuen ConcreteDecorator 'ArchTroll'
      */
-
+    Troll arched = new ArchTroll(clubbed);
+    arched.attack();
+    arched.fleeBattle();
+    LOGGER.info("Clubbed troll power {}.\n", arched.getAttackPower());
   }
 }
