@@ -8,15 +8,13 @@ public class VinylCreatorTest{
 
     @Test
     public void testVinylCreatorWithEP() {
-        VinylCreator vinylCreator = new VinylCreator();
-        Vinyl ep = vinylCreator.create("EP");
+        Vinyl ep = VinylCreator.create("EP");
         verifyVinyl(ep,ep, EP.class);
     }
 
     @Test
     public void testVinylCreatorWithLP() {
-        VinylCreator vinylCreator = new VinylCreator();
-        Vinyl ep = vinylCreator.create("LP");
+        Vinyl ep = VinylCreator.create("LP");
         verifyVinyl(ep,ep, LP.class);
     }
 
