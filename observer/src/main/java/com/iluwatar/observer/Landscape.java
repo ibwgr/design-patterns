@@ -21,43 +21,39 @@
  * THE SOFTWARE.
  */
 package com.iluwatar.observer;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  *
- * The Observer pattern is a software design pattern in which an object, called the subject,
- * maintains a list of its dependents, called observers, and notifies them automatically of any
- * state changes, usually by calling one of their methods. It is mainly used to implement
- * distributed event handling systems. The Observer pattern is also a key part in the familiar
- * model–view–controller (MVC) architectural pattern. The Observer pattern is implemented in
- * numerous programming libraries and systems, including almost all GUI toolkits.
- * <p>
- * In this example {@link Weather} has a state that can be observed. The {@link Orcs} and
- * {@link Hobbits} register as observers and receive notifications when the {@link Weather} changes.
+ * Weather can be observed by implementing {@link ConditionObserver} interface and registering as
+ * listener.
  *
+ *
+ * Die Klasse ist das Subject und enthält bereits Methoden zum Hinzufügen und Entfernen von Observern ({@link ConditionObserver})
+ * @todo: es fehlt allerdings noch die Funktionalität um Observer über Änderungen zu benachrichten, füge diese hinzu
  */
-public class App {
+public class Landscape extends Condition {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(Landscape.class);
 
-  /**
-   * Program entry point
-   *
-   * @param args command line args
-   */
-  public static void main(String[] args) {
+  private LandscapeType currentLandscape;
 
-    Orcs orcs = new Orcs();
-    Hobbits hobbits = new Hobbits();
-
-    Weather weather = new Weather();
-    weather.addObserver(orcs);
-    weather.addObserver(hobbits);
-
-    weather.timePasses();
-    weather.timePasses();
-    weather.timePasses();
-    weather.timePasses();
+  public Landscape() {
+    currentLandscape = LandscapeType.HILLY;
   }
+
+
+  public void timePasses() {
+    LandscapeType[] enumValues = LandscapeType.values();
+    currentLandscape = enumValues[(currentLandscape.ordinal() + 1) % enumValues.length];
+    LOGGER.info("The landscape changed to {}.", currentLandscape);
+    notifyObservers(this);
+  }
+
+  public LandscapeType getLandscape(){
+        return currentLandscape;
+  }
+
 }

@@ -26,17 +26,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * Orcs
  *
  */
-public class Orcs implements WeatherObserver {
+public class Orcs extends ConditionObserver {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Orcs.class);
 
   @Override
-  public void update(WeatherType currentWeather) {
-    switch (currentWeather) {
+  void updateWeather(Weather currentWeather) {
+    switch (currentWeather.getWheather()) {
       case COLD:
         LOGGER.info("The orcs are freezing cold.");
         break;
@@ -48,6 +48,23 @@ public class Orcs implements WeatherObserver {
         break;
       case WINDY:
         LOGGER.info("The orc smell almost vanishes in the wind.");
+        break;
+      default:
+        break;
+    }
+  }
+
+  @Override
+  void updateLandscape(Landscape currentLandscape) {
+    switch (currentLandscape.getLandscape()) {
+      case HILLY:
+        LOGGER.info("The orcs are climbing on the mountains.");
+        break;
+      case WOODY:
+        LOGGER.info("The orcs chop down some trees.");
+        break;
+      case PLAIN:
+        LOGGER.info("The orcs are searching for some bushes.");
         break;
       default:
         break;

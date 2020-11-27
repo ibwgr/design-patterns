@@ -22,44 +22,13 @@
  */
 package com.iluwatar.observer;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+public enum LandscapeType {
 
-/**
- *
- * Weather can be observed by implementing {@link ConditionObserver} interface and registering as
- * listener.
- *
- *
- * Die Klasse ist das Subject und enthält bereits Methoden zum Hinzufügen und Entfernen von Observern ({@link ConditionObserver})
- * @todo: es fehlt allerdings noch die Funktionalität um Observer über Änderungen zu benachrichten, füge diese hinzu
- */
-public class Weather extends Condition {
+  HILLY, WOODY, PLAIN;
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(Weather.class);
-
-  private WeatherType currentWeather;
-
-  public Weather() {
-    currentWeather = WeatherType.SUNNY;
+  @Override
+  public String toString() {
+    return this.name().toLowerCase();
   }
-
-
-  /**
-   * Makes time pass for weather
-   */
-  public void timePasses() {
-    WeatherType[] enumValues = WeatherType.values();
-    currentWeather = enumValues[(currentWeather.ordinal() + 1) % enumValues.length];
-    LOGGER.info("The weather changed to {}.", currentWeather);
-    notifyObservers(this);
-  }
-
-  public WeatherType getWheather(){
-        return currentWeather;
-  }
-
 }

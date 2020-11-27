@@ -26,17 +26,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * Hobbits
  *
  */
-public class Hobbits implements WeatherObserver {
+public class Hobbits extends ConditionObserver {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Hobbits.class);
 
   @Override
-  public void update(WeatherType currentWeather) {
-    switch (currentWeather) {
+  public void updateWeather(Weather currentWeather) {
+    switch (currentWeather.getWheather()) {
       case COLD:
         LOGGER.info("The hobbits are shivering in the cold weather.");
         break;
@@ -48,6 +48,23 @@ public class Hobbits implements WeatherObserver {
         break;
       case WINDY:
         LOGGER.info("The hobbits hold their hats tightly in the windy weather.");
+        break;
+      default:
+        break;
+    }
+  }
+
+  @Override
+  void updateLandscape(Landscape currentLandscape) {
+    switch (currentLandscape.getLandscape()) {
+      case HILLY:
+        LOGGER.info("The hobbits are hiding in the valley.");
+        break;
+      case WOODY:
+        LOGGER.info("The hobbits are sitting in the trees.");
+        break;
+      case PLAIN:
+        LOGGER.info("The hobbits are sitting in a circle together.");
         break;
       default:
         break;

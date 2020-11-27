@@ -22,13 +22,18 @@
  */
 package com.iluwatar.observer;
 
-/**
- * 
- * Observer interface.
- * 
- */
-public interface WeatherObserver {
 
-  void update(WeatherType currentWeather);
+public abstract class ConditionObserver {
+
+  abstract void updateWeather(Weather currentWeather);
+  abstract void updateLandscape(Landscape currentLandscape);
+
+  public void update(Condition currentCondition){
+    if(currentCondition instanceof Weather){
+      updateWeather((Weather) currentCondition);
+    } else {
+      updateLandscape((Landscape) currentCondition);
+    }
+  };
 
 }
