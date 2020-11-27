@@ -26,11 +26,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * Melee strategy.
  *
  */
-public class MeleeStrategy {
+public class MeleeStrategy implements DragonSlayingStrategy {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(MeleeStrategy.class);
 

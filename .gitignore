@@ -3,3 +3,7 @@
 .idea/workspace.xml
 */target/
 /target/
+observer/src/test/java/com/iluwatar/observer/WeatherTest.java
+observer/src/test/java/com/iluwatar/observer/HobbitsTest.java
+observer/src/test/java/com/iluwatar/observer/OrcsTest.java
+observer/src/test/java/com/iluwatar/observer/WeatherObserverTest.java

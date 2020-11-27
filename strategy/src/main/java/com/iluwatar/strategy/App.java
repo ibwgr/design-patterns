@@ -26,21 +26,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * The Strategy pattern (also known as the policy pattern) is a software design pattern that enables
  * an algorithm's behavior to be selected at runtime.
  *
  * In this example ({@link DragonSlayingStrategy}) encapsulates an algorithm. The containing object
  * ({@link DragonSlayer}) can alter its behavior by changing its strategy.
- * 
+ *
  */
 public class App {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
-  
+
   /**
    * Program entry point
-   * 
+   *
    * @param args command line args
    *
    * @todo: nutze hier das Strategy Pattern, sodass die drei Strategien
@@ -48,16 +48,17 @@ public class App {
    * via Context {@link DragonSlayer}) verwendet werden können
    */
   public static void main(String[] args) {
+    DragonSlayer dragonSlayer = new DragonSlayer(new MeleeStrategy());
+
     LOGGER.info("Green dragon spotted ahead!");
-    MeleeStrategy meleeStrategy = new MeleeStrategy();
-    meleeStrategy.execute();
+    dragonSlayer.goToBattle();
 
     LOGGER.info("Red dragon emerges.");
-    ProjectileStrategy projectileStrategy = new ProjectileStrategy();
-    projectileStrategy.execute();
+    dragonSlayer.changeStrategy(new ProjectileStrategy());
+    dragonSlayer.goToBattle();
 
     LOGGER.info("Black dragon lands before you.");
-    SpellStrategy spellStrategy = new SpellStrategy();
-    spellStrategy.execute();
+    dragonSlayer.changeStrategy(new SpellStrategy());
+    dragonSlayer.goToBattle();
   }
 }

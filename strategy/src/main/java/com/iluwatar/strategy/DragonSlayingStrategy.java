@@ -23,12 +23,13 @@
 package com.iluwatar.strategy;
 
 /**
- * 
+ *
  * Strategy interface.
- * 
+ *
  */
 public interface DragonSlayingStrategy {
 
   // @todo: add method
+    public void execute();
 
 }
