@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * SubtleMethod implementation of {@link StealingMethod}.
  *
  */
@@ -34,14 +34,17 @@ public class SubtleMethod extends StealingMethod{
 
   private static final Logger LOGGER = LoggerFactory.getLogger(SubtleMethod.class);
 
+  @Override
   String chooseTarget() {
     return "shop keeper";
   }
 
+  @Override
   void confuseTarget(String target) {
     LOGGER.info("Approach the {} with tears running and hug him!", target);
   }
 
+  @Override
   void stealIt(String target) {
     LOGGER.info("While in close contact grab the {}'s wallet.", target);
   }

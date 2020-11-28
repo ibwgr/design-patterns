@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * HitAndRunMethod implementation of {@link StealingMethod}.
  *
  */
@@ -34,15 +34,18 @@ public class HitAndRunMethod extends StealingMethod {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(HitAndRunMethod.class);
 
-  String pickTarget() {
+  @Override
+  String chooseTarget() {
     return "old goblin woman";
   }
 
+  @Override
   void confuseTarget(String target) {
     LOGGER.info("Approach the {} from behind.", target);
   }
 
-  void stealTheItem(String target) {
+  @Override
+  void stealIt(String target) {
     LOGGER.info("Grab the handbag and run away fast!");
   }
 }
