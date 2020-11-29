@@ -1,5 +1,6 @@
 package first;
 
+import second.Picture;
 import second.ProxyPicture;
 
 public class App {
@@ -11,13 +12,13 @@ public class App {
          * Um RealPicture zu nutzen hat ein Kollege einen Proxy gebaut (ProxyPicture), leider hat er das Pattern nicht so ganz verstanden und dadurch den Proxy nicht optimal gestaltet.
          * Verbessere den Proxy
          */
-        ProxyPicture image = new ProxyPicture("largePicture.jpg");
+        Picture image = new ProxyPicture("largePicture.jpg");
 
         //picture will be loaded from server
-        image.draw();
+        image.display();
         System.out.println("now read from cache");
 
         //cached picture (do not download picture again)
-        image.draw();
+        image.display();
     }
 }
