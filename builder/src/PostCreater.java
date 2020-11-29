@@ -9,9 +9,10 @@ import java.util.ArrayList;
 public class PostCreater {
     static ArrayList<Post> posts = new ArrayList<>();
     public static void main(String[] args) {
-        posts.add(new Post("blog-post", "javadevcentral"));
-        posts.add(new Post("blog-post", "javadevcentral", "17.11"));
-        posts.add(new Post("blog-post", "javadevcentral", "18.11", 1000, 5000));
+        Post.PostBuilder postBuilder = new Post.PostBuilder("blog-post", "javadevcentral");
+        posts.add(postBuilder.build());
+        posts.add(postBuilder.datePosted("17.11").build());
+        posts.add(postBuilder.datePosted("18.11").numberOfWords(1000).numberOfCharacters(5000).build());
         printPosts();
     }
 

@@ -4,21 +4,13 @@ public class Post {
     private String datePosted;
     private int numberOfWords;
     private int numberOfCharacters;
-    public Post(String title, String author) {
-        this(title, author, null);
-    }
-    public Post(String title, String author, String datePosted) {
-        this(title, author, datePosted, 0);
-    }
-    public Post(String title, String author, String datePosted, int numberOfWords) {
-        this(title, author, datePosted, numberOfWords, 0);
-    }
-    public Post(String title, String author, String datePosted, int numberOfWords, int numberOfCharacters) {
-        this.title = title;
-        this.author = author;
-        this.datePosted = datePosted;
-        this.numberOfWords = numberOfWords;
-        this.numberOfCharacters = numberOfCharacters;
+
+    private Post(PostBuilder postBuilder) {
+        this.title = postBuilder.title;
+        this.author = postBuilder.author;
+        this.datePosted = postBuilder.datePosted;
+        this.numberOfWords = postBuilder.numberOfWords;
+        this.numberOfCharacters = postBuilder.numberOfCharacters;
     }
 
     @Override
@@ -31,5 +23,39 @@ public class Post {
                 ", numberOfCharacters=" + numberOfCharacters +
                 '}';
     }
+
+    public static class PostBuilder{
+        private String title;
+        private String author;
+        private String datePosted;
+        private int numberOfWords;
+        private int numberOfCharacters;
+
+        public PostBuilder(String title, String author){
+            this.title = title;
+            this.author = author;
+        }
+
+        public PostBuilder datePosted(String datePosted){
+            this.datePosted = datePosted;
+            return this;
+        }
+
+        public PostBuilder numberOfWords(int numberOfWords){
+            this.numberOfWords = numberOfWords;
+            return this;
+        }
+
+        public PostBuilder numberOfCharacters(int numberOfCharacters){
+            this.numberOfCharacters = numberOfCharacters;
+            return this;
+        }
+
+        public Post build(){
+            return new Post(this);
+        }
+
+    }
+
 }
 
