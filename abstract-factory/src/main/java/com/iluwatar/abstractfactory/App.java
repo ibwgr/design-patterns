@@ -117,7 +117,7 @@ public class App {
 
     // Verbesserungspotential (Vermeidung von new)
     LOGGER.info("Elf Kingdom via FactoryProducer");
-    app.createKingdom(KingdomFactoryProducer.getFactory("elf"));
+    app.createKingdom(KingdomFactoryProducer.getFactory(KingdomFactoryProducer.KingdomType.ELF));
     LOGGER.info(app.getArmy().getDescription());
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());

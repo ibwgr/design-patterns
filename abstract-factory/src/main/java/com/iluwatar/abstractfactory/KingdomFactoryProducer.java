@@ -1,13 +1,20 @@
 
 package com.iluwatar.abstractfactory;
 
-public class KingdomFactoryProducer {
-    public static KingdomFactory getFactory(String type) {
-        if(type.equalsIgnoreCase("elf")) {
+public final class KingdomFactoryProducer {
+    enum KingdomType {
+        ORC,
+        ELF
+    }
+
+    public static KingdomFactory getFactory(KingdomType kingdomType) {
+        if(kingdomType == KingdomType.ELF) {
             return new ElfKingdomFactory();
-        } else if(type.equalsIgnoreCase("orc")) {
+        } else if(kingdomType == KingdomType.ORC) {
             return new OrcKingdomFactory();
         }
-        throw new IllegalArgumentException("type \"" + type + "\" not valid");
+
+        // that can never happen as kingdomType ist typesafe
+        throw new IllegalArgumentException("kindwomType \"" + kingdomType + "\" not valid");
     }
 }
