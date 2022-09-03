@@ -1,6 +1,6 @@
 package com.iluwatar.abstractfactory;
 
-public final class FactoryProducer {
+public final class KingdomFactoryProducer {
     public static KingdomFactory produce(String kingdomFactoryType) {
         switch (kingdomFactoryType) {
             case "elf":
