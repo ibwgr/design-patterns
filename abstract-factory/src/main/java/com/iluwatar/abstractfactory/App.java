@@ -104,13 +104,13 @@ public class App {
     App app = new App();
 
     LOGGER.info("Elf Kingdom");
-    app.createKingdom(new ElfKingdomFactory());
+    app.createKingdom(FactoryProducer.produce("elf"));
     LOGGER.info(app.getArmy().getDescription());
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());
 
     LOGGER.info("Orc Kingdom");
-    app.createKingdom(new OrcKingdomFactory());
+    app.createKingdom(FactoryProducer.produce("orc"));
     LOGGER.info(app.getArmy().getDescription());
     LOGGER.info(app.getCastle().getDescription());
     LOGGER.info(app.getKing().getDescription());
