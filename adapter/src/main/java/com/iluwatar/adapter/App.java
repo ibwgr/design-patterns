@@ -53,17 +53,17 @@ public class App {
     captainOfBattleShip.fire();
 
     /**
-     * @todo: aktiviere sobald {@link BattleFishingBoat} umgesetzt
+     * aktiviere sobald {@link BattleFishingBoat} umgesetzt
      */
-//    Captain captainOfFirstFisherBoat = new Captain(new BattleFishingBoat());
-//    captainOfFirstFisherBoat.move();
-//    captainOfFirstFisherBoat.fire();
+    Captain captainOfFirstFisherBoat = new Captain(new BattleFishingBoat());
+    captainOfFirstFisherBoat.move();
+    captainOfFirstFisherBoat.fire();
 
     /**
-     * @todo: aktiviere sobald {@link RealBattleFishingBoat} umgesetzt
+     * aktiviere sobald {@link RealBattleFishingBoat} umgesetzt
      */
-//    Captain captainOfSecondFisherBoat = new Captain(new RealBattleFishingBoat());
-//    captainOfSecondFisherBoat.move();
-//    captainOfSecondFisherBoat.fire();
+    Captain captainOfSecondFisherBoat = new Captain(new RealBattleFishingBoat());
+    captainOfSecondFisherBoat.move();
+    captainOfSecondFisherBoat.fire();
   }
 }
